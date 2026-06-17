@@ -1,0 +1,736 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravi Kumar Shah — Architect of Sovereign Capability</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ZEN TECHNOCRATIC PALETTE
+   Deep warm slate — easier on eyes than harsh black/white
+   Bitcoin amber as the singular accent
+   All text sizes large enough for older / tired eyes
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --bg:          #0f1117;
+  --bg-card:     #161b26;
+  --bg-raised:   #1c2333;
+  --border:      #2a3347;
+
+  --text-primary:   #e8dcc8;
+  --text-secondary: #a09880;
+  --text-dim:       #556070;
+
+  --btc:         #f7931a;
+  --btc-dim:     #f7931a18;
+  --btc-hover:   #e8821a;
+
+  --font-body:   'Space Grotesk', system-ui, sans-serif;
+  --font-display:'Playfair Display', Georgia, serif;
+  --font-mono:   'JetBrains Mono', 'Courier New', monospace;
+
+  --sz-xs:   0.82rem;
+  --sz-sm:   1.0rem;
+  --sz-base: 1.12rem;
+  --sz-md:   1.25rem;
+  --sz-lg:   1.5rem;
+  --sz-xl:   1.85rem;
+  --sz-hero: clamp(3rem, 10vw, 5.2rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--sz-base);
+  font-weight: 400;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Ambient glow */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 10%, #f7931a09 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 85% 90%, #f7931a06 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 44px 22px 80px;
+  animation: riseIn 0.85s ease both;
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── TICKER BAR ── */
+.ticker-bar {
+  font-family: var(--font-mono);
+  font-size: var(--sz-xs);
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 44px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  animation: riseIn 0.8s 0.04s ease both;
+}
+
+.ticker-bar .accent { color: var(--btc); }
+
+/* ── MASTHEAD ── */
+.masthead {
+  margin-bottom: 44px;
+  animation: riseIn 0.85s 0.08s ease both;
+}
+
+.name-label {
+  font-family: var(--font-mono);
+  font-size: var(--sz-xs);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--btc);
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: var(--sz-hero);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--btc);
+}
+
+.tagline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.tagline-dash {
+  width: 30px;
+  height: 2px;
+  background: var(--btc);
+  flex-shrink: 0;
+}
+
+.tagline-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--sz-md);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.meta-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meta-links a {
+  font-family: var(--font-mono);
+  font-size: var(--sz-xs);
+  color: var(--text-secondary);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.meta-links a::before {
+  content: '↗';
+  color: var(--btc);
+}
+
+.meta-links a:hover { color: var(--btc); }
+
+/* ── CORE QUESTION ── */
+.core-question {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--btc);
+  padding: 30px 26px 30px 28px;
+  margin-bottom: 52px;
+  position: relative;
+  overflow: hidden;
+  animation: riseIn 0.85s 0.14s ease both;
+}
+
+.core-question::before {
+  content: '?';
+  position: absolute;
+  right: 12px;
+  top: -8px;
+  font-family: var(--font-display);
+  font-size: 9rem;
+  color: var(--btc-dim);
+  line-height: 1;
+  pointer-events: none;
+  font-weight: 900;
+}
+
+.cq-label {
+  font-family: var(--font-mono);
+  font-size: var(--sz-xs);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--btc);
+  margin-bottom: 14px;
+}
+
+.cq-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--sz-lg);
+  line-height: 1.7;
+  color: var(--text-primary);
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── SECTION STRUCTURE ── */
+.section {
+  margin-bottom: 52px;
+  animation: riseIn 0.85s ease both;
+}
+
+.section:nth-child(3) { animation-delay: 0.18s; }
+.section:nth-child(4) { animation-delay: 0.26s; }
+.section:nth-child(5) { animation-delay: 0.32s; }
+.section:nth-child(6) { animation-delay: 0.38s; }
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.sec-num {
+  font-family: var(--font-mono);
+  font-size: var(--sz-xs);
+  color: var(--btc);
+  letter-spacing: 0.14em;
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-family: var(--font-body);
+  font-size: var(--sz-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sec-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--border), transparent);
+}
+
+/* ── PILLARS ── */
+.pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.pillar {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 24px 20px 20px;
+  transition: border-color 0.25s, background 0.25s;
+  position: relative;
+}
+
+.pillar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background 0.25s;
+}
+
+.pillar:hover { background: var(--bg-raised); border-color: var(--btc); }
+.pillar:hover::after { background: var(--btc); }
+
+.pillar-icon {
+  font-size: var(--sz-xl);
+  display: block;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.pillar-name {
+  font-size: var(--sz-md);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.pillar-insight {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--sz-sm);
+  color: var(--btc);
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.pillar-certs {
+  list-style: none;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pillar-certs li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  padding-left: 14px;
+  position: relative;
+}
+
+.pillar-certs li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--btc);
+}
+
+.cert-date { color: var(--btc); font-weight: 500; }
+
+/* ── LOOP ── */
+.loop-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 22px 24px;
+  margin-top: 12px;
+}
+
+.loop-label {
+  font-family: var(--font-mono);
+  font-size: var(--sz-xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
+
+.loop-flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  row-gap: 10px;
+}
+
+.loop-node {
+  font-family: var(--font-mono);
+  font-size: var(--sz-sm);
+  color: var(--text-primary);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  white-space: nowrap;
+}
+
+.loop-node.lit {
+  border-color: var(--btc);
+  color: var(--btc);
+}
+
+.loop-arr {
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: var(--sz-sm);
+}
+
+/* ── EDUCATION ── */
+.edu-entry {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.edu-entry:last-child { border-bottom: none; }
+
+.edu-years {
+  font-family: var(--font-mono);
+  font-size: var(--sz-xs);
+  color: var(--btc);
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  padding-top: 3px;
+}
+
+.edu-degree {
+  font-size: var(--sz-md);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+  line-height: 1.35;
+}
+
+.edu-school {
+  font-family: var(--font-mono);
+  font-size: var(--sz-xs);
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+  line-height: 1.65;
+}
+
+/* ── ILLUMINATIONS ── */
+.illum-list { display: flex; flex-direction: column; gap: 8px; }
+
+.illum-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 16px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s;
+}
+
+.illum-row:hover { border-color: var(--btc); }
+
+.illum-yr {
+  font-family: var(--font-mono);
+  font-size: var(--sz-xs);
+  color: var(--btc);
+  letter-spacing: 0.08em;
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+
+.illum-title {
+  font-size: var(--sz-base);
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.illum-org {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--sz-xs);
+  color: var(--text-secondary);
+  margin-top: 3px;
+}
+
+/* ── CLOSING ── */
+.closing {
+  border-top: 1px solid var(--border);
+  padding-top: 38px;
+  animation: riseIn 0.85s 0.44s ease both;
+}
+
+.closing-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--sz-md);
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+
+.closing-sub {
+  font-family: var(--font-mono);
+  font-size: var(--sz-xs);
+  color: var(--text-dim);
+  letter-spacing: 0.18em;
+  margin-bottom: 30px;
+}
+
+.connect-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.connect-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: var(--sz-sm);
+  color: #0f1117;
+  background: var(--btc);
+  padding: 13px 24px;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.connect-link:hover {
+  background: var(--btc-hover);
+  transform: translateY(-2px);
+}
+
+.lightning-note {
+  font-family: var(--font-mono);
+  font-size: var(--sz-xs);
+  color: var(--btc);
+  letter-spacing: 0.08em;
+}
+
+/* ── BLOCK FOOTER ── */
+.block-footer {
+  margin-top: 52px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.block-footer span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 580px) {
+  .page { padding: 28px 16px 60px; }
+  .pillars { grid-template-columns: 1fr; gap: 10px; }
+  .edu-entry { grid-template-columns: 1fr; gap: 4px; }
+  .edu-years { padding-top: 0; }
+  .closing-text { font-size: var(--sz-base); }
+  .connect-row { flex-direction: column; align-items: flex-start; }
+  .ticker-bar { display: none; }
+  .block-footer { flex-direction: column; gap: 4px; }
+}
+
+/* ── PRINT ── */
+@media print {
+  body { background: #fff; color: #111; }
+  body::after { display: none; }
+  .page { padding: 30px; }
+  * { animation: none !important; }
+  .ticker-bar, .block-footer { display: none; }
+  .core-question, .pillar, .illum-row, .loop-block {
+    background: #f7f7f7 !important;
+    border-color: #ccc !important;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TICKER -->
+  <div class="ticker-bar">
+    <span>CURRICULUM VITAE · RAVI KUMAR SHAH · 1983 · NEPAL</span>
+    <span class="accent">₿ SOUND MONEY · SOVEREIGN TOOLS · HUMAN DIGNITY</span>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <p class="name-label">// architect · builder · educator</p>
+    <h1>Ravi <em>Kumar</em><br>Shah</h1>
+    <div class="tagline">
+      <div class="tagline-dash"></div>
+      <span class="tagline-text">Architect of Sovereign Capability</span>
+    </div>
+    <div class="meta-links">
+      <a href="https://bitmonk.pages.dev/">The Bitcoin Monastery</a>
+      <a href="https://raviacademy.pages.dev/">Ravi Academy</a>
+
+    </div>
+  </header>
+
+  <!-- CORE QUESTION -->
+  <div class="core-question">
+    <p class="cq-label">// one core question</p>
+    <p class="cq-text">How can ordinary people protect the full value of their honest labour in an era of monetary distortion and technological acceleration?</p>
+  </div>
+
+  <!-- PILLARS -->
+  <section class="section">
+    <div class="section-head">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Four Interlocking Pillars</h2>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="pillars">
+
+      <div class="pillar">
+        <span class="pillar-icon">₿</span>
+        <div class="pillar-name">Bitcoin &amp; Sound Money</div>
+        <div class="pillar-insight">Money must be scarce, verifiable, and outside any single authority</div>
+        <ul class="pillar-certs">
+          <li><span class="cert-date">Mar 2026</span> — Bitcoin Development Philosophy<br>Plan B Network Diploma</li>
+          <li><span class="cert-date">May 2024</span> — Bitcoin for Everybody<br>Saylor Academy</li>
+          <li><span class="cert-date">2024</span> — Introduction to Bitcoin<br>Antonopoulos · PRAGMA Workshops</li>
+        </ul>
+      </div>
+
+      <div class="pillar">
+        <span class="pillar-icon">⚖</span>
+        <div class="pillar-name">Austrian Economics</div>
+        <div class="pillar-insight">Value is subjective, time preference governs action, inflation is hidden theft</div>
+        <ul class="pillar-certs">
+          <li><span class="cert-date">Feb 2026</span> — Austrian School of Economics Fundamentals<br>Plan B Network Diploma</li>
+        </ul>
+      </div>
+
+      <div class="pillar">
+        <span class="pillar-icon">⛓</span>
+        <div class="pillar-name">Blockchain</div>
+        <div class="pillar-insight">True decentralization is rare; protocols must serve sovereignty, never centralise power</div>
+        <ul class="pillar-certs">
+          <li><span class="cert-date">Jan 2025</span> — Mastering Web3<br>University of Nicosia</li>
+          <li><span class="cert-date">May 2024</span> — Advanced Topics in Blockchain &amp; Digital Currency · UNic</li>
+          <li><span class="cert-date">Mar 2024</span> — Introduction to Blockchain &amp; Digital Currency · UNic</li>
+        </ul>
+      </div>
+
+      <div class="pillar">
+        <span class="pillar-icon">◈</span>
+        <div class="pillar-name">Artificial Intelligence</div>
+        <div class="pillar-insight">AI must remain a neutral, open tool that amplifies sovereignty — never replaces the artisan</div>
+        <ul class="pillar-certs">
+          <li><span class="cert-date">Jan 2025</span> — MasterClass on AI<br>ILO International Training Centre</li>
+          <li><span class="cert-date">Mar 2025</span> — Elements of AI<br>University of Helsinki</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="loop-block">
+      <p class="loop-label">// the closed loop</p>
+      <div class="loop-flow">
+        <span class="loop-node lit">Theory (Austrian)</span>
+        <span class="loop-arr">→</span>
+        <span class="loop-node">Practice (Bitcoin)</span>
+        <span class="loop-arr">→</span>
+        <span class="loop-node">Infrastructure (Blockchain)</span>
+        <span class="loop-arr">→</span>
+        <span class="loop-node">Empowerment (AI)</span>
+        <span class="loop-arr">↺</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section">
+    <div class="section-head">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Academic Foundations</h2>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="edu-entry">
+      <div class="edu-years">2010–<br>2012</div>
+      <div>
+        <div class="edu-degree">Master of Human and Natural Resource Studies</div>
+        <div class="edu-school">Kathmandu University · Kathmandu, Nepal</div>
+      </div>
+    </div>
+    <div class="edu-entry">
+      <div class="edu-years">2004–<br>2008</div>
+      <div>
+        <div class="edu-degree">Bachelor of Information Technology</div>
+        <div class="edu-school">Purbanchal University · Faculty of Science &amp; Technology<br>Biratnagar, Nepal</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ILLUMINATIONS -->
+  <section class="section">
+    <div class="section-head">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Selected Illuminations</h2>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="illum-list">
+      <div class="illum-row">
+        <span class="illum-yr">2025</span>
+        <div>
+          <div class="illum-title">Net Zero: What, Why and How</div>
+          <span class="illum-org">United Nations University</span>
+        </div>
+      </div>
+      <div class="illum-row">
+        <span class="illum-yr">2025</span>
+        <div>
+          <div class="illum-title">Introducing International Relations</div>
+          <span class="illum-org">The Open University</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <footer class="closing">
+    <p class="closing-text">I pursued a single, unified vision across monetary theory, sound-money technology, decentralized infrastructure, and empowering intelligence tools — so that small producers and communities can keep, protect, and multiply the value they create in the emerging digital economy.</p>
+    <p class="closing-sub">PURPOSEFUL SYNTHESIS &nbsp;·&nbsp; COHERENT DIRECTION</p>
+    <p class="closing-text" style="margin-top: 16px; font-size: var(--sz-md); color: var(--text-primary);">If this resonates with your mission, I'd be honoured to talk.</p>
+    <div class="connect-row">
+      <a class="connect-link" href="https://x.com/BitCafeSocratic">
+        ↗ Connect · @BitCafeSocratic
+      </a>
+      <span class="lightning-note">⚡ Coffee on me — Lightning preferred</span>
+    </div>
+  </footer>
+
+  <!-- BLOCK FOOTER -->
+  <div class="block-footer">
+    <span>Nepal · 1983 – present</span>
+    <span>@bit.monk:matrix.org</span>
+    <span>Updated · 2026</span>
+  </div>
+
+</div>
+</body>
+</html>
